@@ -23,7 +23,16 @@ struct MenuBarLabelView: View {
 
 struct MenuBarPanelView: View {
     @ObservedObject var model: AgentBarModel
-    @Environment(\.openSettings) private var openSettings
+    private var openSettings: @MainActor () -> Void {
+        {
+            NSApp.activate(ignoringOtherApps: true)
+            if #available(macOS 14.0, *) {
+                NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
+            } else {
+                NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
+            }
+        }
+    }
 
     private static let panelWidth: CGFloat = 500
 
@@ -71,7 +80,6 @@ struct MenuBarPanelView: View {
             .disabled(model.isRefreshing)
 
             Button {
-                NSApp.activate(ignoringOtherApps: true)
                 openSettings()
             } label: {
                 Image(systemName: "gearshape")
