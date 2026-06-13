@@ -36,12 +36,7 @@ jobs:
       - name: Package release assets
         run: |
           ditto -c -k --keepParent .build/AgentBar.app AgentBar-macos.zip
-          hdiutil create \
-            -volname "AgentBar" \
-            -srcfolder .build/AgentBar.app \
-            -ov \
-            -format UDZO \
-            AgentBar-macos.dmg
+          ./Scripts/create_dmg.sh AgentBar-macos.dmg
 
       - name: Upload workflow artifacts
         uses: actions/upload-artifact@v4
