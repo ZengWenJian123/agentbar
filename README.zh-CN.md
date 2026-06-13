@@ -43,6 +43,12 @@ brew tap varenyzc1/agentbar
 brew install --cask agentbar
 ```
 
+如果点击设置没有反应，在终端运行以下命令移除隔离标记，再重新打开应用：
+
+```bash
+xattr -cr /Applications/AgentBar.app
+```
+
 ### 从源码构建
 
 环境要求：

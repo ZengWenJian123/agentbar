@@ -43,6 +43,12 @@ brew tap varenyzc1/agentbar
 brew install --cask agentbar
 ```
 
+If clicking Settings does nothing, run the following command in Terminal to remove the quarantine flag, then relaunch the app:
+
+```bash
+xattr -cr /Applications/AgentBar.app
+```
+
 ### Build from source
 
 Requirements:

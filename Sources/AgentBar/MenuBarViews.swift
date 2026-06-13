@@ -4,6 +4,33 @@ import SwiftUI
 
 private let agentBarProgressGreen = Color(nsColor: .systemGreen)
 
+@MainActor
+private final class SettingsWindowManager {
+    static let shared = SettingsWindowManager()
+    private var window: NSWindow?
+
+    func show(model: AgentBarModel) {
+        if let window, window.isVisible {
+            window.makeKeyAndOrderFront(nil)
+            NSApp.activate(ignoringOtherApps: true)
+            return
+        }
+
+        let hostingView = NSHostingView(rootView: SettingsView(model: model))
+        let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 560, height: 420),
+                              styleMask: [.titled, .closable],
+                              backing: .buffered,
+                              defer: false)
+        window.title = "AgentBar Settings"
+        window.contentView = hostingView
+        window.center()
+        window.isReleasedWhenClosed = false
+        self.window = window
+        window.makeKeyAndOrderFront(nil)
+        NSApp.activate(ignoringOtherApps: true)
+    }
+}
+
 struct MenuBarLabelView: View {
     @ObservedObject var model: AgentBarModel
 
@@ -23,16 +50,6 @@ struct MenuBarLabelView: View {
 
 struct MenuBarPanelView: View {
     @ObservedObject var model: AgentBarModel
-    private var openSettings: @MainActor () -> Void {
-        {
-            NSApp.activate(ignoringOtherApps: true)
-            if #available(macOS 14.0, *) {
-                NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
-            } else {
-                NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
-            }
-        }
-    }
 
     private static let panelWidth: CGFloat = 500
 
@@ -80,7 +97,7 @@ struct MenuBarPanelView: View {
             .disabled(model.isRefreshing)
 
             Button {
-                openSettings()
+                SettingsWindowManager.shared.show(model: model)
             } label: {
                 Image(systemName: "gearshape")
             }
