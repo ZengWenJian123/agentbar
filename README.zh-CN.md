@@ -4,7 +4,7 @@
 
 AgentBar 是一个 macOS 菜单栏应用，用来查看本地 AI 编程助手的使用量。它会扫描本地使用记录，估算 token 和费用，并把配额进度直接显示在菜单栏里。
 
-![AgentBar 主界面](docs/assets/agentbar-dashboard.png)
+<img src="docs/assets/agentbar-dashboard.png" alt="AgentBar 主界面" width="360">
 
 ## 主要功能
 
@@ -14,7 +14,7 @@ AgentBar 是一个 macOS 菜单栏应用，用来查看本地 AI 编程助手的
 - 基于模型价格估算费用，并支持配置预算。
 - 本地优先：扫描、归一化和统计都在你的 Mac 上完成。
 
-![AgentBar 菜单栏](docs/assets/agentbar-menu-bar.png)
+<img src="docs/assets/agentbar-menu-bar.png" alt="AgentBar 菜单栏" width="220">
 
 ## 安装
 
@@ -67,7 +67,7 @@ swift test
 
 AgentBar 支持配置菜单栏显示内容、刷新频率、token 与费用预算，也可以手动扫描或重新计算本地使用数据。
 
-![AgentBar 设置](docs/assets/agentbar-settings.png)
+<img src="docs/assets/agentbar-settings.png" alt="AgentBar 设置" width="420">
 
 ## 基础原理
 
