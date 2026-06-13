@@ -1,0 +1,41 @@
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+
+# Xcode
+DerivedData/
+*.xcuserdata/
+*.xcuserstate
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+
+# Build products and debug symbols
+*.app
+*.dSYM/
+*.ipa
+*.pkg
+
+# macOS metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Editor and local environment files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.tmp
+*.log
+.env
+.env.*
+
+# Runtime data
+*.sqlite
+*.sqlite3
+*.db
+*.db-shm
+*.db-wal
