@@ -37,7 +37,7 @@ git push origin v0.1.0
 发布 Release 后，可以通过 Homebrew tap 分发：
 
 ```bash
-brew tap your-org/agentbar
+brew tap varenyzc1/agentbar
 brew install --cask agentbar
 ```
 
@@ -50,7 +50,7 @@ brew install --cask agentbar
 - Swift 5.9 或更新版本
 
 ```bash
-git clone https://github.com/your-org/agentbar.git
+git clone https://github.com/varenyzc1/agentbar.git
 cd agentbar
 ./build.sh
 open .build/AgentBar.app
@@ -100,4 +100,4 @@ swift test
 
 ## License
 
-开源发布前，请补充你希望使用的开源许可证。
+Apache License 2.0。详见 [LICENSE](LICENSE)。

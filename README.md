@@ -37,7 +37,7 @@ git push origin v0.1.0
 After releases are published, AgentBar can be distributed through a tap:
 
 ```bash
-brew tap your-org/agentbar
+brew tap varenyzc1/agentbar
 brew install --cask agentbar
 ```
 
@@ -50,7 +50,7 @@ Requirements:
 - Swift 5.9 or later
 
 ```bash
-git clone https://github.com/your-org/agentbar.git
+git clone https://github.com/varenyzc1/agentbar.git
 cd agentbar
 ./build.sh
 open .build/AgentBar.app
@@ -100,4 +100,4 @@ swift test
 
 ## License
 
-Add your preferred open-source license before publishing the repository.
+Apache License 2.0. See [LICENSE](LICENSE).
