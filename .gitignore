@@ -14,6 +14,7 @@ DerivedData/
 # Build products and debug symbols
 *.app
 *.dSYM/
+*.dmg
 *.ipa
 *.pkg
 

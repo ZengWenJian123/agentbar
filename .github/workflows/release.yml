@@ -27,11 +27,22 @@ jobs:
       - name: Build app bundle
         run: ./build.sh
 
-      - name: Package app
+      - name: Package zip
         run: ditto -c -k --keepParent .build/AgentBar.app AgentBar-macos.zip
 
-      - name: Upload release asset
+      - name: Package dmg
+        run: |
+          hdiutil create \
+            -volname AgentBar \
+            -srcfolder .build/AgentBar.app \
+            -ov \
+            -format UDZO \
+            AgentBar-macos.dmg
+
+      - name: Upload release assets
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
-          files: AgentBar-macos.zip
+          files: |
+            AgentBar-macos.zip
+            AgentBar-macos.dmg
