@@ -151,9 +151,54 @@ swift test
 
 推送 `v*` tag 后，GitHub Actions 会构建 release。CI 会运行测试、构建 app bundle、上传 `AgentBar-macos.zip` 和 `AgentBar-macos.dmg` 到 GitHub Releases，并在配置 `TAP_PAT` 后更新 Homebrew cask。
 
-```bash
-./release.sh 0.1.0
-```
+### 日常开发
+
+1. 修改代码后提交并推送：
+
+   ```bash
+   git add .
+   git commit -m "你的提交信息"
+   git push
+   ```
+
+   也可以在 VSCode 源代码管理面板操作：暂存更改（⊕）、输入提交信息、提交（✔）、同步（⇄）。
+
+2. 提交前建议先跑测试：
+
+   ```bash
+   swift test
+   ```
+
+3. 本地调试运行：
+
+   ```bash
+   ./debug.sh
+   ```
+
+### 发布新版本
+
+1. 确保所有改动已提交并推送到远程。
+
+2. 运行测试：
+
+   ```bash
+   swift test
+   ```
+
+3. 创建并推送版本 tag：
+
+   ```bash
+   ./release.sh 0.2.0
+   ```
+
+   这会创建 `v0.2.0` tag 并推送到 GitHub。CI 自动完成：
+   - 运行测试
+   - 构建 `.app` bundle
+   - 打包 `AgentBar-macos.zip` 和 `AgentBar-macos.dmg`
+   - 创建 GitHub Release 并上传产物
+   - 更新 Homebrew cask（需配置 `TAP_PAT` secret）
+
+4. 在 GitHub 仓库页面的 **Actions** 查看构建进度。构建完成后，**Releases** 页面会出现可下载的 dmg 和 zip 文件。
 
 ## 参与贡献
 
