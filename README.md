@@ -151,9 +151,54 @@ Repository layout:
 
 Releases are built by GitHub Actions when a `v*` tag is pushed. CI runs tests, builds the app bundle, uploads `AgentBar-macos.zip` and `AgentBar-macos.dmg` to GitHub Releases, and updates the Homebrew cask when `TAP_PAT` is configured.
 
-```bash
-./release.sh 0.1.0
-```
+### Daily Development
+
+1. Make your changes and commit:
+
+   ```bash
+   git add .
+   git commit -m "Your commit message"
+   git push
+   ```
+
+   Or use the VSCode source control panel: stage changes (⊕), type a commit message, commit (✔), and sync (⇄).
+
+2. Run tests before committing:
+
+   ```bash
+   swift test
+   ```
+
+3. Test locally with a debug build:
+
+   ```bash
+   ./debug.sh
+   ```
+
+### Publishing a New Release
+
+1. Make sure all changes are committed and pushed.
+
+2. Run tests:
+
+   ```bash
+   swift test
+   ```
+
+3. Create and push a version tag:
+
+   ```bash
+   ./release.sh 0.2.0
+   ```
+
+   This creates a `v0.2.0` tag and pushes it to GitHub. CI automatically:
+   - Runs the test suite
+   - Builds the `.app` bundle
+   - Packages `AgentBar-macos.zip` and `AgentBar-macos.dmg`
+   - Publishes a GitHub Release with both files attached
+   - Updates the Homebrew cask (if `TAP_PAT` secret is configured)
+
+4. Monitor the build at **Actions** on the GitHub repository page. Once complete, the release with downloadable assets appears at **Releases**.
 
 ## Contributing
 
