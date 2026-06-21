@@ -107,6 +107,7 @@ struct MenuBarPanelView: View {
                 language: model.settings.language
             )
             UsageThirtyDayBarChartView(days: recentThirtyDayUsage, language: model.settings.language)
+                .zIndex(2)
             CodexQuotaCardView(
                 state: model.quotaState,
                 quotaItems: model.settings.sanitized.codexMenuBarQuotaItems,
